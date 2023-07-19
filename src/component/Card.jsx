@@ -6,7 +6,7 @@ const Card = ({title, desc}) => {
             <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">{desc}</p>   
         </div>
     </div>
-  )
+  ) 
 }
 
 export default Card

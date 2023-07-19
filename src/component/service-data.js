@@ -31,5 +31,5 @@ const ServiceData = [
         title: 'Advanced Options',
         desc: 'I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.'
     }
-]
+] 
 export default ServiceData
