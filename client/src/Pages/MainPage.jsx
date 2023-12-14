@@ -1,7 +1,7 @@
 import Home from '../component/Home'
 import About from '../component/About'
 import Services from '../component/Services'
-import EmailForm from '../component/EmailForm'
+import ContactUs from '../component/ContactUs'
 
 const MainPage = () => {
   return (
@@ -9,7 +9,7 @@ const MainPage = () => {
       <Home />
       <About />  
       <Services />
-      <EmailForm />
+      <ContactUs />
     </>
   )
 }

@@ -1,51 +1,55 @@
 const express = require('express');
 const nodemailer = require('nodemailer')
-const cors = require('cors')
+const cors = require('cors');
+const { sendMailToUser } = require('./utility/sendMail');
 require('dotenv').config();
 
 const app = express();
 app.use(express.json());
 app.use(cors({
-    origin: 'http://localhost:5173/',
-    credentials: true
+    origin: 'http://localhost:5173'
 }))
 
-const PORT = process.env.PORT || 5001
+const port = process.env.PORT;
 
-app.get('/', (req, res)=>{
-    res.send("Hello");
+app.get('/', async (req, res) => {
+  res.send("connected")
 })
-// Nodemailer configuration
-const transporter = nodemailer.createTransport({
+app.post('/send-email', async (req, res) => {
+  const { name, email, message } = req.body;
+
+  const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: process.env.GMAIL,
-      pass: process.env.GMAIL_PASS,
+      user: process.env.AUTH_EMAIL,
+      pass: process.env.AUTH_PASS
     },
   });
-  
-  // Endpoint to send emails
-  app.post('/send-email', (req, res) => {
-    const { to, subject, text } = req.body;
-  
-    const mailOptions = {
-      from: process.env.GMAIL,
-      to,
-      subject,
-      text,
-    };
-  
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        return res.status(500).send(error.toString());
-      }
-      res.status(200).send('Email sent: ' + info.response);
-    });
-  });
-  
-  
 
+  const userMailOptions = {
+    from: process.env.FROM,
+    to: email,
+    subject: 'Thank you for contacting us',
+    text: `Hello ${name},\n\nThank you for reaching out. We will get back to you as soon as possible.\n\nBest regards,\nAkash Amrolkar`,
+  };
 
-app.listen(PORT, ()=>{
-    console.log(`Server is running on port ${PORT}`);
+  const ownerMailOptions = {
+    from: process.env.FROM,
+    to: process.env.AUTH_EMAIL,
+    subject: 'New contact form submission',
+    text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+  };
+
+  try {
+    await transporter.sendMail(userMailOptions);
+    await transporter.sendMail(ownerMailOptions);
+    res.status(200).send('Form submitted successfully!');
+  } catch (error) {
+    console.error('Error sending emails:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.listen(port, ()=>{
+    console.log(`Server is running on port ${port}`);
 })
