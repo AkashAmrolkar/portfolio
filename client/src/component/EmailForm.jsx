@@ -16,6 +16,7 @@ const EmailForm = () => {
     e.preventDefault();
 
     try {
+      //https://portfolio-s3jz.vercel.app
       const response = await fetch('https://portfolio-s3jz.vercel.app/send-email', {
         method: 'POST',
         headers: {
