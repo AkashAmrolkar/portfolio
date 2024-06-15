@@ -6,10 +6,7 @@ import ContactUs from '../component/ContactUs'
 const MainPage = () => {
   return (
     <>
-      <Home />
-      <About />  
-      <Services />
-      <ContactUs />
+      
     </>
   )
 }

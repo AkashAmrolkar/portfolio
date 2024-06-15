@@ -1,35 +1,13 @@
-import { Link, NavLink } from 'react-router-dom';
-import Logo from '../assets/logo.jpg';
-import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa'
-import { IoMdMenu, IoMdClose } from "react-icons/io";
-import { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { IoMdMenu, IoMdClose } from 'react-icons/io';
 
 const Navbar = () => {
+  const [openMenu, setOpenMenu] = useState(false);
 
-  const [menuOpen, setMenuOpen] = useState(false)
-  const openMenuHandler = () => {
-    setMenuOpen(true)
-  }
-  const closeMenuHandler = () => {
-    setMenuOpen(false)
-  }
-
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  const handleScroll = () => {
-    const scrollTop = window.scrollY;
-    // Set the state based on whether the user has scrolled down
-    setIsScrolled(scrollTop > 40);
+  const handleMenuToggle = () => {
+    setOpenMenu(!openMenu);
   };
-
-  // Attach the scroll event listener when the component mounts
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    // Remove the event listener when the component unmounts
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   const menuLists = [
     {
@@ -52,65 +30,78 @@ const Navbar = () => {
       title: 'Contact',
       link: '/contact'
     }
-  ]
-  const background = {
-    backgroundImage: `url(${Logo})`
-  }
+  ];
 
   return (
-    <>
-      <nav className={`${isScrolled ? 'fixed' : ''} bg-black py-4 w-full transition-all duration-1000`}>
-        <div className=" container mx-auto px-4">
-          <div className="flex justify-between align-middle items-center">
-            <div className="logo-box w-[80px] h-[80px] bg-no-repeat bg-cover bg-blend-difference bg-white" style={background}></div>
+    <nav className='bg-[#191d28] py-4'>
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center">
+          <div className='text-primary font-bold text-4xl'>Akash</div>
 
-            <div className='mobile_menu md:hidden'>
-              {
-                !menuOpen && <IoMdMenu className='text-white hover:opacity-70 text-3xl' onClick={openMenuHandler} />
-              }
-              {
-                menuOpen && <IoMdClose className='text-white hover:opacity-70 text-3xl' onClick={closeMenuHandler} />
-              }
-            </div>
-            <div className={'list-items hidden md:flex gap-4 items-center'}>
-              {
-                menuLists.map((menu, index) => (
-                  <NavLink to={menu.link} key={index} className=' text-white hover:opacity-70 text-xl'>{menu.title}</NavLink>
-                ))
-              }
-            </div>
-            <div className='hidden md:flex gap-4 items-center'>
-              <Link to='#'><FaLinkedin className='text-white hover:opacity-70 text-3xl' /></Link>
-              <Link to='#'><FaInstagram className='text-white hover:opacity-70 text-3xl' /></Link>
-              <Link to='#'><FaGithub className='text-white hover:opacity-70 text-3xl' /></Link>
-            </div>
+          {/* Desktop Menu */}
+          <ul className='hidden md:flex gap-4 items-center'>
+            {menuLists.map((menu, index) => (
+              <li
+                key={index}
+                className='text-white transition duration-300 ease-in-out transform hover:scale-105'
+              >
+                <Link
+                  to={menu.link}
+                  className={`hover:text-primary ${
+                    index === menuLists.length - 1
+                      ? 'rounded-md bg-primary px-5 py-3 text-secondary hover:text-secondary'
+                      : ''
+                  }`}
+                >
+                  {menu.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* Mobile Menu Toggle */}
+          <div className='md:hidden'>
+            {openMenu ? (
+              <IoMdClose
+                className='text-white h-10 w-10 cursor-pointer'
+                onClick={handleMenuToggle}
+              />
+            ) : (
+              <IoMdMenu
+                className='text-white h-10 w-10 cursor-pointer'
+                onClick={handleMenuToggle}
+              />
+            )}
           </div>
         </div>
-      </nav>
-      {
-        menuOpen &&
-        <nav className={`${isScrolled ? 'fixed' : ''} bg-black w-full transition-all duration-1000 relative`}>
-          <div className={`${isScrolled ? 'top-40' : 'top-0'} mobile-menu container mx-auto px-4 py-4 absolute bg-white w-11/12 shadow-lg border-transparent`}>
-            <div className='flex flex-col gap-4'>
-              <div className={'list-items md:hidden flex flex-col gap-4 items-start'}>
-                {
-                  menuLists.map((menu, index) => (
-                    <NavLink to={menu.link} key={index} className=' text-black hover:opacity-70 text-xl'>{menu.title}</NavLink>
-                  ))
-                }
-              </div>
-              <div className='flex gap-4 items-center md:hidden'>
-                <Link to='#'><FaLinkedin className='text-black hover:opacity-70 text-3xl' /></Link>
-                <Link to='#'><FaInstagram className='text-black hover:opacity-70 text-3xl' /></Link>
-                <Link to='#'><FaGithub className='text-black hover:opacity-70 text-3xl' /></Link>
-              </div>
-            </div>
+
+        {/* Mobile Menu */}
+        <div className={`md:hidden fixed top-16 right-0 bg-[#191d28] z-50 w-full transform ${openMenu ? 'translate-x-0 ease-out' : 'translate-x-full ease-in'}`}>
+          <div className='py-4'>
+            <ul className='text-left'>
+              {menuLists.map((menu, index) => (
+                <li
+                  key={index}
+                  className='text-white mb-4 transition duration-300 ease-in-out transform hover:scale-105'
+                >
+                  <Link
+                    to={menu.link}
+                    className={`block py-2 px-4 rounded-md hover:bg-primary hover:text-secondary ${
+                      index === menuLists.length - 1
+                        ? 'mx-4 mt-2 rounded-3xl bg-primary w-fit px-5 py-3 text-secondary'
+                        : ''
+                    }`}
+                  >
+                    {menu.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
-        </nav>
-      }
-    </>
+        </div>
+      </div>
+    </nav>
+  );
+};
 
-  )
-}
-
-export default Navbar
+export default Navbar;
