@@ -1,9 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { IoMdMenu, IoMdClose } from 'react-icons/io';
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const handleMenuToggle = () => {
     setOpenMenu(!openMenu);
@@ -33,7 +50,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className='bg-[#191d28] py-4'>
+    <nav className={`bg-[#191d28] py-4 ${isSticky ? 'fixed top-0 left-0 right-0 z-50 shadow-md' : ''}`}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <div className='text-primary font-bold text-4xl'>Akash</div>
@@ -49,7 +66,7 @@ const Navbar = () => {
                   to={menu.link}
                   className={`hover:text-primary ${
                     index === menuLists.length - 1
-                      ? 'rounded-md bg-primary px-5 py-3 text-secondary hover:text-secondary'
+                      ? 'rounded-md bg-primary px-5 py-3 text-secondary font-semibold hover:text-secondary'
                       : ''
                   }`}
                 >
@@ -88,7 +105,7 @@ const Navbar = () => {
                     to={menu.link}
                     className={`block py-2 px-4 rounded-md hover:bg-primary hover:text-secondary ${
                       index === menuLists.length - 1
-                        ? 'mx-4 mt-2 rounded-3xl bg-primary w-fit px-5 py-3 text-secondary'
+                        ? 'mt-2 ml-4 rounded-md bg-primary px-5 py-3 w-fit text-secondary font-semibold'
                         : ''
                     }`}
                   >
