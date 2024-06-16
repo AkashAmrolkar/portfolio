@@ -1,11 +1,6 @@
-import Banner from '../assets/Banner.jpg';
 import resume from '../assets/Akash-Amrolkar-Resume.pdf'
 import Typewriter from './TypeWriter'
 const Home = () => {
-  const style = {
-    backgroundImage: `url(${Banner})`,
-
-  }
   return (
     <div className=' bg-no-repeat bg-cover bg-center py-10 md:h-screen grid bg-secondary'>
       <div className='container mx-auto px-4 py-10 md:py-40'>

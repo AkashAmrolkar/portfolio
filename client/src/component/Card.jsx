@@ -1,11 +1,21 @@
-const Card = ({icon, title, desc}) => {
+const Card = ({data}) => {
   return (
-    <div className="card">
-        <div className="p-6 bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-center items-center gap-4">
-          <img src={icon} width='48' height='48' alt={title} />  
-          <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white text-center">{title}</h5>
-            <p className="mb-3 font-normal text-gray-500 dark:text-gray-400 text-center">{desc}</p>   
+    <div className="card bg-[#161922] p-5 mb-5 hover:bg-secondary hover:shadow-xl">
+        <p className="text-white mb-4">{data?.date}</p>
+        <div className="flex gap-4 items-center mb-4">
+          {
+            data?.img && (
+              <img src={`${data?.img}`} height='40' width='40' alt="logo" />
+            )
+          }
+          <h4 className="text-primary font-bold text-xl">{data?.title}</h4>
         </div>
+        {
+          data?.content && (
+            <div className="mb-4 text-white">{data.content}</div>
+          )
+        }
+        <div className=" font-semibold text-white">{data.position}</div>
     </div>
   ) 
 }
