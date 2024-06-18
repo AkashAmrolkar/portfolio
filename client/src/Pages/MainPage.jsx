@@ -12,6 +12,7 @@ const MainPage = () => {
       <About />
       <Skills />
       <Resume />
+      <ContactUs />
       <Socials />
     </div>
   )

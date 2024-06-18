@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import akash from '../assets/Akash.jpg'
+import akash from '../assets/developer.svg'
 import resume from '../assets/Akash-Amrolkar-Resume.pdf'
 const About = () => {
   return (
@@ -15,7 +15,7 @@ const About = () => {
             </div>
           </div>
           <div className="col-span-12 md:col-span-6">
-              <img src={`${akash}`} height='200' width='200' loading="lazy" alt="about-img" />
+              <img src={`${akash}`} height='400' width='400' loading="lazy" alt="about-img" />
           </div>
         </div>
       </div>

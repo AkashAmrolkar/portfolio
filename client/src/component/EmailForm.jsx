@@ -39,22 +39,22 @@ const EmailForm = () => {
     <form onSubmit={handleSubmit} className='flex flex-col gap-2'>
       <div className='grid grid-cols-2 gap-4 mb-3'>
         <div className='field flex flex-col gap-2'>
-          <label htmlFor="name">Name:</label>
-          <input type="text" id="name" name="name" placeholder='Eg. John Doe' onChange={handleChange} className=' border shadow-lg rounded-2xl h-12 px-3' required />
+          <label className=' text-white text-lg font-medium' htmlFor="name">Name:</label>
+          <input type="text" id="name" name="name" placeholder='Eg. John Doe' onChange={handleChange} className=' border shadow-lg rounded-md text-white h-12 px-3  bg-[#161922]' required />
         </div>
 
         <div className='field flex flex-col gap-2'>
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" placeholder='Eg. text@gmail.com' onChange={handleChange} className=' border shadow-lg rounded-2xl h-12 px-3' required />
+          <label className=' text-white text-lg font-medium' htmlFor="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder='Eg. text@gmail.com' onChange={handleChange} className=' border shadow-lg rounded-md text-white h-12 px-3 bg-[#161922]' required />
         </div>
       </div>
 
       <div className='field flex flex-col gap-2 mb-3'>
-        <label htmlFor="message">Message:</label>
-        <textarea id="message" name="message" rows="8" onChange={handleChange} className=' border shadow-lg rounded-2xl px-3 w-full' required></textarea>
+        <label className=' text-white text-lg font-medium' htmlFor="message">Message:</label>
+        <textarea id="message" name="message" rows="8" placeholder='Message' onChange={handleChange} className=' border shadow-lg rounded-md text-white p-3 w-full  bg-[#161922]' required></textarea>
       </div>
 
-      <button type="submit" className='bg-black w-fit text-white px-8 py-3 font-medium border border-transparent rounded-2xl hover:bg-white hover:border hover:text-black hover:border-white hover:font-medium transition duration-200 ease-in-out]'>Submit</button>
+      <button type="submit" className='rounded-md bg-primary px-5 py-3 text-secondary font-semibold hover:text-secondary w-fit'>Submit</button>
     </form>
 
   );
