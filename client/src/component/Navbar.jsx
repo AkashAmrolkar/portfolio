@@ -33,19 +33,19 @@ const Navbar = () => {
     },
     {
       title: 'About',
-      link: '/about'
+      link: '#about'
     },
     {
       title: 'Skills',
-      link: '/skills'
+      link: '#skills'
     },
     {
-      title: 'Experience',
-      link: '/experience'
+      title: 'Resume',
+      link: '#resume'
     },
     {
       title: 'Contact',
-      link: '/contact'
+      link: '#contact'
     }
   ];
 
@@ -57,21 +57,34 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <ul className='hidden md:flex gap-4 items-center'>
-            {menuLists.map((menu, index) => (
+          {menuLists.map((menu, index) => (
               <li
                 key={index}
                 className='text-white transition duration-300 ease-in-out transform hover:scale-105'
               >
-                <Link
-                  to={menu.link}
-                  className={`hover:text-primary ${
-                    index === menuLists.length - 1
-                      ? 'rounded-md bg-primary px-5 py-3 text-secondary font-semibold hover:text-secondary'
-                      : ''
-                  }`}
-                >
-                  {menu.title}
-                </Link>
+                {menu.link.startsWith('#') ? (
+                  <a
+                    href={menu.link}
+                    className={`hover:text-primary ${
+                      index === menuLists.length - 1
+                        ? 'rounded-md bg-primary px-5 py-3 text-secondary font-semibold hover:text-secondary'
+                        : ''
+                    }`}
+                  >
+                    {menu.title}
+                  </a>
+                ) : (
+                  <Link
+                    to={menu.link}
+                    className={`hover:text-primary ${
+                      index === menuLists.length - 1
+                        ? 'rounded-md bg-primary px-5 py-3 text-secondary font-semibold hover:text-secondary'
+                        : ''
+                    }`}
+                  >
+                    {menu.title}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
@@ -101,6 +114,18 @@ const Navbar = () => {
                   key={index}
                   className='text-white mb-4 transition duration-300 ease-in-out transform hover:scale-105'
                 >
+                  {menu.link.startsWith('#') ? (
+                  <a
+                    href={menu.link}
+                    className={`block py-2 px-4 rounded-md hover:bg-primary hover:text-secondary ${
+                      index === menuLists.length - 1
+                        ? 'mt-2 ml-4 rounded-md bg-primary px-5 py-3 w-fit text-secondary font-semibold'
+                        : ''
+                    }`}
+                  >
+                    {menu.title}
+                  </a>
+                ) : (
                   <Link
                     to={menu.link}
                     className={`block py-2 px-4 rounded-md hover:bg-primary hover:text-secondary ${
@@ -111,6 +136,7 @@ const Navbar = () => {
                   >
                     {menu.title}
                   </Link>
+                )}
                 </li>
               ))}
             </ul>

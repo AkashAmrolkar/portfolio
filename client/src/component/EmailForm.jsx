@@ -37,13 +37,13 @@ const EmailForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className='flex flex-col gap-2'>
-      <div className='grid grid-cols-2 gap-4 mb-3'>
-        <div className='field flex flex-col gap-2'>
+      <div className='block md:flex gap-5 mb-3'>
+        <div className='field flex-1 flex flex-col gap-2'>
           <label className=' text-white text-lg font-medium' htmlFor="name">Name:</label>
           <input type="text" id="name" name="name" placeholder='Eg. John Doe' onChange={handleChange} className=' border shadow-lg rounded-md text-white h-12 px-3  bg-[#161922]' required />
         </div>
 
-        <div className='field flex flex-col gap-2'>
+        <div className='flex-1 field flex flex-col gap-2'>
           <label className=' text-white text-lg font-medium' htmlFor="email">Email:</label>
           <input type="email" id="email" name="email" placeholder='Eg. text@gmail.com' onChange={handleChange} className=' border shadow-lg rounded-md text-white h-12 px-3 bg-[#161922]' required />
         </div>

@@ -43,7 +43,7 @@ const Resume = () => {
         }
     ]
   return (
-    <div className=" py-16 px-4 bg-secondary">
+    <div className=" py-16 px-4 bg-secondary" id='resume'>
         <div className="w-full md:w-3/4 mx-auto">
         <div className='flex justify-center'>
             <h2 className=" text-4xl text-center w-fit font-bold mb-10 text-primary title_bfr_efc relative pl-14">Resume</h2>
