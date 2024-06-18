@@ -13,7 +13,6 @@ const MainPage = () => {
       <Skills />
       <Resume />
       <ContactUs />
-      <Socials />
     </div>
   )
 }
