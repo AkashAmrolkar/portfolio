@@ -100,10 +100,10 @@ const Skills = () => {
             <div className='flex justify-center'>
                 <h2 className=" text-4xl text-center w-fit font-bold mb-8 text-primary title_bfr_efc relative pl-14">My Skills</h2>
             </div>
-            <div className='flex gap-4 flex-wrap justify-center w-full mx-auto'>
+            <div className='grid grid-cols-2 md:grid-cols-8 gap-4'>
                 {
                     skillSets.map((skill)=>(
-                        <div className='px-8 py-4 rounded-md bg-[#161922]  transition duration-300 ease-in-out transform hover:scale-105 flex justify-center flex-col items-center'> 
+                        <div className=' col-span-1 px-8 py-4 rounded-md bg-[#161922]  transition duration-300 ease-in-out transform hover:scale-105 flex justify-center flex-col items-center'> 
                             {skill.icon}
                             <p className='text-white font-medium mt-3'>{skill.name}</p>
                         </div>
