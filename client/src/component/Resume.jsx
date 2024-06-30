@@ -42,39 +42,39 @@ const Resume = () => {
             position: 'MSBSHSE'
         }
     ]
-  return (
-    <div className=" py-16 px-4 bg-secondary" id='resume'>
-        <div className="w-full md:w-3/4 mx-auto">
-        <div className='flex justify-center'>
-            <h2 className=" text-4xl text-center w-fit font-bold mb-10 text-primary title_bfr_efc relative pl-14">Resume</h2>
-        </div> 
-        <div className="grid grid-cols-12 gap-5">
-            <div className="col-span-12 md:col-span-6">
-                <div className='flex gap-4 justify-center'>
-                    <BsFillBagPlusFill className='text-primary h-10 w-10' />
-                    <h3 className='text-primary font-bold text-4xl mb-8'>Experience</h3>                    
-                </div>                
-                {
-                    experience.map((exp, index)=>(
-                        <Card data={{...exp}} key={index} />
-                    ))
-                }
-            </div>
-            <div className="col-span-12 md:col-span-6">
-                <div className='flex gap-4 justify-center'>
-                    <FaBookOpen className='text-primary h-10 w-10' />
-                    <h3 className='text-primary font-bold text-4xl mb-8'>Education</h3>
+    return (
+        <div className=" py-16 px-4 bg-secondary" id='resume'>
+            <div className="w-full md:w-3/4 mx-auto">
+                <div className='flex justify-center'>
+                    <h2 className=" text-4xl text-center w-fit font-bold mb-10 text-primary title_bfr_efc relative pl-14">Resume</h2>
                 </div>
-                {
-                    educations.map((edu, index)=>(
-                        <Card data={{...edu}} key={index} />
-                    ))
-                }
+                <div className="grid grid-cols-12 gap-5">
+                    <div className="col-span-12 md:col-span-6">
+                        <div className='flex gap-4 justify-center'>
+                            <BsFillBagPlusFill className='text-primary h-10 w-10' />
+                            <h3 className='text-primary font-bold text-4xl mb-8'>Experience</h3>
+                        </div>
+                        {
+                            experience.map((exp, index) => (
+                                <Card data={{ ...exp }} key={index} />
+                            ))
+                        }
+                    </div>
+                    <div className="col-span-12 md:col-span-6">
+                        <div className='flex gap-4 justify-center'>
+                            <FaBookOpen className='text-primary h-10 w-10' />
+                            <h3 className='text-primary font-bold text-4xl mb-8'>Education</h3>
+                        </div>
+                        {
+                            educations.map((edu, index) => (
+                                <Card data={{ ...edu }} key={index} />
+                            ))
+                        }
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
-    </div>
-  )
+    )
 }
 
 export default Resume

@@ -105,7 +105,7 @@ const Skills = () => {
                     skillSets.map((skill)=>(
                         <div className=' col-span-1 px-8 py-4 rounded-md bg-[#161922]  transition duration-300 ease-in-out transform hover:scale-105 flex justify-center flex-col items-center'> 
                             {skill.icon}
-                            <p className='text-white font-medium mt-3'>{skill.name}</p>
+                            <p className='text-white font-medium mt-3 text-center'>{skill.name}</p>
                         </div>
                     ))
                 }
