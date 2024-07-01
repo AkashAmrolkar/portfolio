@@ -15,7 +15,6 @@ const MainPage = () => {
       <Resume />
       <MyWorks />
       <ContactUs />
-      <Socials />
     </div>
   )
 }

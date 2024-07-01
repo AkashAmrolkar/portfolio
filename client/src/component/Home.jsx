@@ -13,7 +13,7 @@ const Home = () => {
            <Typewriter  text="Full Stack Developer" speed={150} />
           </div>
           <div className='mt-10'>
-            <a href={resume} rel='noreferrer' target='_blank' className=' rounded-md bg-primary px-5 py-3 w-fit text-secondary font-semibold'>Download Resume</a>
+            <a href={resume} rel='noreferrer' target='_blank' className=' rounded-md bg-primary px-5 py-3 w-fit text-secondary font-semibold transition duration-300 ease-in-out transform hover:scale-105'>Download Resume</a>
           </div>
         </div>
       </div>

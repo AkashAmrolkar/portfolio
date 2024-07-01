@@ -34,11 +34,6 @@ const GetInTouch = () => {
                     ))
                 }
             </div>
-            <div className='flex gap-4 items-center'>
-                <Link to='#'><FaLinkedin className='text-black hover:opacity-70 text-3xl' /></Link>
-                <Link to='#'><FaInstagram className='text-black hover:opacity-70 text-3xl' /></Link>
-                <Link to='#'><FaGithub className='text-black hover:opacity-70 text-3xl' /></Link>
-            </div>
         </div>
     )
 }
