@@ -20,3 +20,20 @@ h1, h2, h3, h4, h5, h6{
     left: 0;
     transform: translateY(50%);
 }
+.footer:before {
+    content: '';
+    height: 2px;
+    position: absolute;
+    background: #ffcb7545;
+    width: 39%;
+    top: 50%;
+}
+.footer:after {
+    content: '';
+    height: 2px;
+    position: absolute;
+    background: #ffcb7545;
+    width: 39%;
+    right: 0;
+    top: 50%;
+}

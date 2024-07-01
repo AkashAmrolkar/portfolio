@@ -25,13 +25,15 @@ const Footer = () => {
     ]
   return (
     <div className=' bg-secondary py-10 shadow-md'>
-        <div className='flex gap-4 items-center justify-center'>
-        {
-            social?.map((item, index)=>(
-                <Link to={item.link} className='text-secondary h-10 w-10 transition duration-300 ease-in-out transform hover:scale-105'>{item?.img}</Link>
-            ))
-        }
-        </div>
+        <div className=' w-full md:w-3/4 mx-auto relative footer'>
+            <div className='flex gap-4 items-center justify-center'>
+            {
+                social?.map((item, index)=>(
+                    <Link to={item.link} className='text-secondary h-10 w-10 transition duration-300 ease-in-out transform hover:scale-105'>{item?.img}</Link>
+                ))
+            }
+            </div>
+        </div>        
     </div>
   )
 }
