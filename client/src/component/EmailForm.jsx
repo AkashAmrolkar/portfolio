@@ -20,7 +20,7 @@ const EmailForm = () => {
 
     try {
       //https://portfolio-s3jz.vercel.app
-      const response = await fetch('http://localhost:5000/api/v1/send-email', {
+      const response = await fetch('https://portfolio-s3jz.vercel.app/api/v1/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
